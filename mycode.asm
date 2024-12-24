@@ -1,9 +1,8 @@
-;;RODRIGO MAIDANA
 .model small
 .stack 100h
 .data
     
-    ;;Si la posicion no esta ocupada, la variable mantendra valor 45d, si tiene una X valor 88d y si tiene una 0 valor 48d
+    ;;If the position is not occupied, the variable will maintain a value of 45d, if it has an X value 88d and if it has a 0 value 48d
     pos1 db 45d
     pos2 db 45d
     pos3 db 45d
@@ -16,10 +15,10 @@
     
     drawChecker db 0d
     
-    gameExplanation dw "El tablero esta distribuido asi:",10,13,'$'
+    gameExplanation dw "The board is distributed like this:",10,13,'$'
     boardPreview dw "  1      |2      |3      ",10,13,"        |       |       ",10,13,"        |       |       ",10,13," -------+-------+-------",10,13," 4      |5      |6      ",10,13,"        |       |       ",10,13,"        |       |       ",10,13," -------+-------+-------",10,13," 7      |8      |9      ",10,13,"        |       |       ",10,13,"        |       |       ",10,13,'$'
     
-    ;;boardPreviw esta ordenado de la siguiente forma:
+    ;;boardPreviw is ordered as follows:
     ;       " 1      |2      |3      "
     ;       "        |       |       "
     ;       "        |       |       "
@@ -32,13 +31,13 @@
     ;       "        |       |       "
     ;       "        |       |       " 
     
-    askForValue db "Ingrese la posicion donde desea colocar la X (1 al 9): $"
-    askForValuePC db "Juega la maquina: $"
-    askAgainTxt db "El valor ingresado no es valido, o ya esta ocupado, intente de nuevo: $"
+    askForValue db "Enter the position where you want to place the X (1 to 9): $"
+    askForValuePC db "Play the machine: $"
+    askAgainTxt db "The value entered is not valid, or is already busy, try again: $"
     
-    userWinsTxt db "Gano usted!!$"
-    PCWinsTxt db "Gano la computadora!!$"
-    DrawTxt db "Es un empate!!$"
+    userWinsTxt db "You win!!$"
+    PCWinsTxt db "I win the computer!!$"
+    DrawTxt db "It's a tie!!$"
                            
    
 .code
@@ -70,9 +69,9 @@ start:
     
     
     
-    ;;SUB-RUTINAS
+    ;;SUB-ROUTINES
     
-    ;;Juega el usuario
+    ;;User plays
     UserTurn:
         push ax ; save ax
         push bx ; save bx
@@ -123,7 +122,7 @@ start:
         pop bx ; restore bx
         pop ax ; restore ax
         ret
-    ;;Juega la maquina    
+    ;Play the machine    
     PcTurn:
         push ax ; save ax
         push bx ; save bx
@@ -175,7 +174,7 @@ start:
         pop ax ; restore ax
         ret    
     
-    ;;Verificamos valor en pos1 (Para el usuario)
+    ;;We verify value in pos1 (For the user)
     checkPos1User:
         cmp pos1, 45d
         jne askAgain
@@ -186,7 +185,7 @@ start:
         call putBoard
         jmp endUserCheck 
     
-    ;;Verificamos valor en pos2 (Para el usuario)
+    ;;We verify value in pos2 (For the user)
     checkPos2User:
         cmp pos2, 45d
         jne askAgain
@@ -197,7 +196,7 @@ start:
         call putBoard
         jmp endUserCheck
     
-    ;;Verificamos valor en pos3 (Para el usuario)
+    ;;We verify value in pos3 (For the user)
     checkPos3User:
         cmp pos3, 45d
         jne askAgain
@@ -208,7 +207,7 @@ start:
         call putBoard
         jmp endUserCheck
     
-    ;;Verificamos valor en pos4 (Para el usuario)
+    ;;We verify value in pos4 (For the user)
     checkPos4User:
         cmp pos4, 45d
         jne askAgain
@@ -219,7 +218,7 @@ start:
         call putBoard
         jmp endUserCheck
     
-    ;;Verificamos valor en pos5 (Para el usuario)
+    ;;We verify value in pos5 (For the user)
     checkPos5User:
         cmp pos5, 45d
         jne askAgain
@@ -230,7 +229,7 @@ start:
         call putBoard
         jmp endUserCheck
         
-    ;;Verificamos valor en pos6 (Para el usuario)
+    ;;We verify value in pos6 (For the user)
     checkPos6User:
         cmp pos6, 45d
         jne askAgain
@@ -241,7 +240,7 @@ start:
         call putBoard
         jmp endUserCheck
         
-    ;;Verificamos valor en pos7 (Para el usuario)
+    ;;We verify value in pos7 (For the user)
     checkPos7User:
         cmp pos7, 45d
         jne askAgain
@@ -252,7 +251,7 @@ start:
         call putBoard
         jmp endUserCheck
         
-    ;;Verificamos valor en pos8 (Para el usuario)
+    ;;We verify value in pos8 (For the user)
     checkPos8User:
         cmp pos8, 45d
         jne askAgain
@@ -263,7 +262,7 @@ start:
         call putBoard
         jmp endUserCheck
         
-    ;;Verificamos valor en pos9 (Para el usuario)
+    ;;We verify value in pos9 (For the user)
     checkPos9User:
         cmp pos9, 45d
         jne askAgain                
@@ -274,7 +273,7 @@ start:
         call putBoard
         jmp endUserCheck
     
-    ;;Verificamos valor en pos1 (Para la maquina)
+    ;;We verify value in pos1 (For the machine)
     checkPos1PC:
         cmp pos1, 45d
         jne rng
@@ -285,7 +284,7 @@ start:
         call putBoard
         jmp endPcCheck
     
-    ;;Verificamos valor en pos2 (Para la maquina)
+    ;;We verify value in pos2 (For the machine)
     checkPos2PC:
         cmp pos2, 45d
         jne rng
@@ -296,7 +295,7 @@ start:
         call putBoard
         jmp endPcCheck
     
-    ;;Verificamos valor en pos3 (Para la maquina)
+    ;;We verify value in pos3 (For the machine)
     checkPos3PC:
         cmp pos3, 45d
         jne rng
@@ -307,7 +306,7 @@ start:
         call putBoard
         jmp endPcCheck
     
-    ;;Verificamos valor en pos4 (Para el usuario)
+    ;;We verify value in pos4 (For the machine)
     checkPos4PC:
         cmp pos4, 45d
         jne rng
@@ -318,7 +317,7 @@ start:
         call putBoard
         jmp endPcCheck
     
-    ;;Verificamos valor en pos5 (Para el usuario)
+    ;;We verify value in pos5 (For the machine)
     checkPos5PC:
         cmp pos5, 45d
         jne rng
@@ -329,7 +328,7 @@ start:
         call putBoard
         jmp endPcCheck
     
-    ;;Verificamos valor en pos6 (Para el usuario)
+    ;;We verify value in pos6 (For the machine)
     checkPos6PC:
         cmp pos6, 45d
         jne rng
@@ -340,7 +339,7 @@ start:
         call putBoard
         jmp endPcCheck
     
-    ;;Verificamos valor en pos7 (Para el usuario)
+    ;;We verify value in pos7 (For the machine)
     checkPos7PC:
         cmp pos7, 45d
         jne rng
@@ -362,7 +361,7 @@ start:
         call putBoard
         jmp endPcCheck
         
-    ;;Verificamos valor en pos9 (Para el usuario)
+    ;;We verify value in pos9 (For the machine)
     checkPos9PC:
         cmp pos9, 45d
         jne rng
@@ -374,16 +373,16 @@ start:
         jmp endPcCheck                                
         
         
-    ;;Verificamos si hay 3 en linea
+    ;;We check if there are 3 in line
     checkWin:
         push ax ; save ax
         push bx ; save bx
         push cx ; save cx
         push dx ; save dx
-        horizontal1:            ;;Verificamos si la 1ra horizontal son todos iguales    
+        horizontal1:            ;;We check if the 1st horizontal are all the same    
             mov al, pos1
             
-            cmp al, 45d         ;;Excluimos - de la igualdad
+            cmp al, 45d         ;;We exclude - from equality
             je horizontal2
             
             mov bl, pos2
@@ -396,10 +395,10 @@ start:
             
             call verifyIfUserOrPc
             
-        horizontal2:            ;;Verificamos si la 2da horizontal son todos iguales
+        horizontal2:            ;;We check if the 2nd horizontal are all the same
             mov al, pos4
             
-            cmp al, 45d         ;;Excluimos - de la igualdad
+            cmp al, 45d         ;;We exclude - from equality
             je horizontal3
             
             mov bl, pos5
@@ -412,10 +411,10 @@ start:
             
             call verifyIfUserOrPc
             
-        horizontal3:            ;;Verificamos si la 3ra horizontal son todos iguales
+        horizontal3:            ;;We check if the 3rd horizontal are all the same
             mov al, pos7
             
-            cmp al, 45d         ;;Excluimos - de la igualdad
+            cmp al, 45d         ;;We exclude - from equality
             je vertical1
             
             mov bl, pos8
@@ -431,7 +430,7 @@ start:
         vertical1:
             mov al, pos1
                                 
-            cmp al, 45d             ;;Excluimos - de la igualdad
+            cmp al, 45d             ;;We exclude - from equality
             je vertical2
             
             mov bl, pos4
@@ -447,7 +446,7 @@ start:
         vertical2:
             mov al, pos2
             
-            cmp al, 45d             ;;Excluimos - de la igualdad
+            cmp al, 45d             ;;We exclude - from equality
             je vertical3
             
             mov bl, pos5
@@ -463,7 +462,7 @@ start:
         vertical3:
             mov al, pos3
             
-            cmp al, 45d             ;;Excluimos - de la igualdad
+            cmp al, 45d             ;;We exclude - from equality
             je diagonal1
             
             mov bl, pos6
@@ -479,7 +478,7 @@ start:
         diagonal1:
             mov al, pos1
             
-            cmp al, 45d             ;;Excluimos - de la igualdad
+            cmp al, 45d             ;;We exclude - from equality
             je diagonal2
             
             mov bl, pos5
@@ -495,7 +494,7 @@ start:
         diagonal2:
             mov al, pos3
             
-            cmp al, 45d             ;;Excluimos - de la igualdad
+            cmp al, 45d             ;;We exclude - from equality
             je drawCheck
             
             mov bl, pos5
@@ -509,9 +508,9 @@ start:
             call verifyIfUserOrPc
             
         drawCheck:
-            mov al, drawChecker      ;;Si se aplico algun cambio retorna, si no, pide valor de nuevo
+            mov al, drawChecker      ;;If any change was applied, it returns, if not, it requests value again
             cmp al, 9d
-            je Draw                 ;;Pero si la variables empate, es mayor a 10, cantamos el empate 
+            je Draw                 ;;But if the variable tie is greater than 10, we call the tie 
             
         endChecking:
         pop dx ; restore dx
@@ -545,7 +544,7 @@ start:
         cmp al, 48d
         je PCWins
                          
-    ;;Valor no valido o ya ingresado, intente de nuevo
+    ;;Invalid value or already entered, try again
     askAgain:
         push ax ; save ax
         push bx ; save bx
@@ -577,14 +576,14 @@ start:
        mov ax, dx
        RET           
     
-    ;;Imprimimos el Tablero
+    ;;We print the Board
     putBoard:
         push ax ; save ax
         push bx ; save bx
         push cx ; save cx
         push dx ; save dx
         
-        ;;Imprime la linea superior
+        ;;Print the top line
         mov dl, pos1
         call putc
         mov dl, pos2
@@ -594,7 +593,7 @@ start:
         
         call putLine
         
-        ;;Imprime la linea Central
+        ;;Print the center line
         mov dl, pos4
         call putc
         mov dl, pos5
@@ -604,7 +603,7 @@ start:
         
         call putLine
         
-        ;;Imprime la linea inferior
+        ;;Print the bottom line
         mov dl, pos7
         call putc
         mov dl, pos8
@@ -641,7 +640,7 @@ start:
         pop ax ; restore ax 
         ret
         
-    ;limpia la pantalla del MS-DOS
+    ;clear the MS-DOS screen
     clearScreen:         
         push ax ; save ax
         push bx ; save bx
@@ -656,7 +655,7 @@ start:
         pop ax ; restore ax    
         ret
         
-    ;;Agrega un salto de linea
+    ;;Add a line break
     putLine:
         push ax
         push bx
@@ -675,7 +674,7 @@ start:
         pop ax
         ret  
     
-    ;;Ingresa chart por teclado
+    ;;Enter chart by keyboard
     getc:
         push bx
         push cx
@@ -689,7 +688,7 @@ start:
         pop bx
         ret
     
-    ;;Imprimimos un caracter   
+    ;;Print a character   
     putc:
         push ax
         push bx
@@ -705,7 +704,7 @@ start:
         pop ax 
         ret 
     
-    ;;Ingresa un decimal
+    ;;Enter a decimal
     getDecimal:
         push bx
         push cx
@@ -720,7 +719,7 @@ start:
         pop bx
         ret
         
-    ;;Metodo imprime 4 digitos 
+    ;;Method prints 4 digits 
     ;;Fuente: https://stackoverflow.com/questions/40864619/adding-4-digit-numbers-and-displaying-sum-assembly-language
     
     PRINT_DIGITOS:
@@ -743,7 +742,7 @@ start:
             loop next    ;Continu for all digits (*)
         ret
          
-    ;;Imprimimos un string
+    ;;We print a string
     puts:
         push ax
         push bx
@@ -775,7 +774,7 @@ start:
         pop ax
         ret 
     
-    ;;Liberamos recursos del procesador
+    ;;We free up processor resources
     finish:
         mov ax, 4c00h  
         int 21h
